@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,6 +8,7 @@
     <!-- Add your CSS frameworks or custom styles here -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
+
 <body class="antialiased">
     <!-- Navigation Bar -->
     <nav class="bg-gray-800 p-4 text-white">
@@ -19,9 +21,11 @@
             <div>
                 <ul class="flex space-x-4">
                     @auth
-                        <li><a href="{{ route('categories.index') }}" class="hover:underline">Categories</a></li>
-                        <li><a href="{{ route('suppliers.index') }}" class="hover:underline">Suppliers</a></li>
-                        <li><a href="{{ route('inventory.index') }}" class="hover:underline">Inventories</a></li>
+                        <li><a href="" class="hover:underline">Create</a></li>
+                        <li><a href="" class="hover:underline">Review</a></li>
+                        <li><a href="" class="hover:underline">Apply</a></li>
+                        <li><a href="" class="hover:underline">Issue</a></li>
+                        <li><a href="" class="hover:underline">Upload</a></li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST" class="inline">
                                 @csrf
@@ -41,4 +45,5 @@
         @yield('content')
     </main>
 </body>
+
 </html>
