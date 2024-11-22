@@ -17,9 +17,11 @@
             <div>
                 <ul class="flex space-x-4">
                     @auth
-                        <li><a href="{{ route('categories.index') }}" class="hover:underline">Categories</a></li>
-                        <li><a href="{{ route('suppliers.index') }}" class="hover:underline">Suppliers</a></li>
-                        <li><a href="{{ route('inventory.index') }}" class="hover:underline">Inventories</a></li>
+                        <li><a href="{{ route() }}" class="hover:underline">Create</a></li>
+                        <li><a href="{{ route() }}" class="hover:underline">Review</a></li>
+                        <li><a href="{{ route() }}" class="hover:underline">Apply</a></li>
+                        <li><a href="{{ route() }}" class="hover:underline">Issue</a></li>
+                        <li><a href="{{ route() }}" class="hover:underline">Upload</a></li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST" class="inline">
                                 @csrf

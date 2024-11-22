@@ -18,6 +18,7 @@ class Guarantee extends Model
         'applicant_name', 
         'applicant_address', 
         'beneficiary_name', 
-        'beneficiary_address'
+        'beneficiary_address',
+        'status',
     ];
 }
