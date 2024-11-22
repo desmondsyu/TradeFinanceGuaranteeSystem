@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: guarantee_sys
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_CONNECTION=mysql
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=guarantee_db
+      - DB_USERNAME=guarantee_user
+      - DB_PASSWORD=guarantee_password
+    volumes:
+      - .:/var/www
+    command: sh -c "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000"
+
+  db:
+    image: mysql:8.0
+    container_name: mysql_guarantee_db
+    environment:
+      MYSQL_DATABASE: guarantee_db
+      MYSQL_USER: guarantee_user
+      MYSQL_PASSWORD: guarantee_password
+      MYSQL_ROOT_PASSWORD: secure_root_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
