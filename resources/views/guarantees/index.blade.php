@@ -38,14 +38,30 @@
                         <td class="px-4 py-2">{{ $guarantee->status }}</td>
                         <td class="px-4 py-2 space-x-2">
                             @if ($guarantee->status === 'New')
-                                <form method="POST" action="{{ route('guarantees.review', $guarantee->id) }}"
+                                <form method="POST" action="{{ route('guarantees.submit', $guarantee->id) }}"
                                     class="inline">
                                     @csrf
-                                    <button type="submit" class="text-green-500 hover:underline">Review</button>
+                                    <button type="submit" class="text-green-500 hover:underline">Submit</button>
+                                </form>
+
+                                <form method="POST" action="{{ route('guarantees.destroy', $guarantee->id) }}"
+                                    class="inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-500 hover:underline"
+                                        onclick="return confirm('Are you sure you want to delete this guarantee?');">Delete</button>
                                 </form>
                             @endif
 
-                            @if ($guarantee->status === 'Approved')
+                            @if ($guarantee->status === 'Submitted')
+                                <form method="POST" action="{{ route('guarantees.review', $guarantee->id) }}"
+                                    class="inline">
+                                    @csrf
+                                    <button type="submit" class="text-green-500 hover:underline">Approve</button>
+                                </form>
+                            @endif
+
+                            @if ($guarantee->status === 'Reviewed')
                                 <form method="POST" action="{{ route('guarantees.apply', $guarantee->id) }}"
                                     class="inline">
                                     @csrf
@@ -53,7 +69,7 @@
                                 </form>
                             @endif
 
-                            @if ($guarantee->status === 'Under Review')
+                            @if ($guarantee->status === 'Applied')
                                 <form method="POST" action="{{ route('guarantees.issue', $guarantee->id) }}"
                                     class="inline">
                                     @csrf
@@ -61,12 +77,7 @@
                                 </form>
                             @endif
 
-                            <form method="POST" action="{{ route('guarantees.destroy', $guarantee->id) }}" class="inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="text-red-500 hover:underline"
-                                    onclick="return confirm('Are you sure you want to delete this guarantee?');">Delete</button>
-                            </form>
+
                         </td>
                     </tr>
                 @empty

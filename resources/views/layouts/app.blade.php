@@ -21,15 +21,20 @@
             <div>
                 <ul class="flex space-x-4">
                     @auth
-                        <li><a href="{{ route('guarantees.create') }}" class="hover:underline">Create</a></li>
-                        <li><a href="{{ route('guarantees.index') }}" class="hover:underline">Review</a></li>
-                        <li><a href="" class="hover:underline">Apply</a></li>
-                        <li><a href="" class="hover:underline">Issue</a></li>
+                        <li><a href="{{ route('guarantees.create') }}" class="hover:underline text-blue-500">Create</a></li>
+                        <li><a href="{{ route('guarantees.index', ['status' => 'New']) }}" class="hover:underline ">New</a>
+                        </li>
+                        <li><a href="{{ route('guarantees.index', ['status' => 'Submitted']) }}"
+                                class="hover:underline">Review</a></li>
+                        <li><a href="{{ route('guarantees.index', ['status' => 'Reviewed']) }}"
+                                class="hover:underline">Apply</a></li>
+                        <li><a href="{{ route('guarantees.index', ['status' => 'Applied,Issued']) }}"
+                                class="hover:underline">Issue</a></li>
                         <li><a href="" class="hover:underline">Upload</a></li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST" class="inline">
                                 @csrf
-                                <button type="submit" class="hover:underline">Logout</button>
+                                <button type="submit" class="hover:underline text-red-500">Logout</button>
                             </form>
                         </li>
                     @else

@@ -14,9 +14,17 @@ class GuaranteeController extends Controller
         $this->guaranteeService = $guaranteeService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $status = $request->query('status');
+
         $guarantees = $this->guaranteeService->getAllGuarantees();
+
+        if ($status) {
+            $statuses = explode(',', $status);
+            $guarantees = $guarantees->whereIn('status', $statuses);
+        }
+
         return view('guarantees.index', compact('guarantees'));
     }
 
@@ -41,7 +49,7 @@ class GuaranteeController extends Controller
         ]);
 
         $this->guaranteeService->createGuarantee($validatedData);
-        return redirect()->route('guarantees.index')->with('success', 'Created');
+        return redirect()->route('guarantees.index', ['status' => 'New'])->with('success', 'Created');
     }
 
     public function show($id)
@@ -50,20 +58,28 @@ class GuaranteeController extends Controller
         return view('guarantees.show', compact('guarantee'));
     }
 
+    public function submit($id)
+    {
+        $this->guaranteeService->updateGuaranteeStatus($id, 'Submitted');
+        return redirect()->route('guarantees.index', ['status' => 'New'])->with('success', 'Guarantee submitted for review.');
+    }
+
     public function review($id)
     {
-        $this->guaranteeService->updateGuaranteeStatus($id, 'Approved');
-        return redirect()->route('guarantees.index')->with('success', 'Guarantee submitted for review.');
+        $this->guaranteeService->updateGuaranteeStatus($id, 'Reviewed');
+        return redirect()->route('guarantees.index', ['status' => 'Submitted'])->with('success', 'Guarantee submitted for review.');
     }
+
     public function apply($id)
     {
         $this->guaranteeService->updateGuaranteeStatus($id, 'Applied');
-        return redirect()->route('guarantees.index')->with('success', 'Guarantee application submitted.');
+        return redirect()->route('guarantees.index', ['status' => 'Applied'])->with('success', 'Guarantee application submitted.');
     }
+
     public function issue($id)
     {
         $this->guaranteeService->updateGuaranteeStatus($id, 'Issued');
-        return redirect()->route('guarantees.index')->with('success', 'Guarantee issued.');
+        return redirect()->route('guarantees.index', ['status' => 'Applied,Issued'])->with('success', 'Guarantee issued.');
     }
 
     public function destroy($id)
