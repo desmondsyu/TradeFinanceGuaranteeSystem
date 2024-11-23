@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\SupplierController;
-use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\GuaranteeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,15 +20,19 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard'); 
+    return view('dashboard');
 })->name('dashboard')->middleware('auth');
 
-// Resource routes for inventory management
+// Resource routes for guarantees
 Route::middleware(['auth'])->group(function () {
-    Route::resource('categories', CategoryController::class);
-    Route::resource('suppliers', SupplierController::class);
-    Route::resource('inventory', InventoryController::class);
+    Route::get('guarantees/index', [GuaranteeController::class, 'index'])->name('guarantees.index');
+    Route::get('guarantees/create', [GuaranteeController::class, 'create'])->name('guarantees.create');
+    Route::post('guarantees/store', [GuaranteeController::class, 'store'])->name('guarantees.store');
+    Route::post('guarantees/{id}/review', [GuaranteeController::class, 'review'])->name('guarantees.review');
+    Route::post('guarantees/{id}/apply', [GuaranteeController::class, 'apply'])->name('guarantees.apply');
+    Route::post('guarantees/{id}/issue', [GuaranteeController::class, 'issue'])->name('guarantees.issue');
+    Route::delete('guarantees/{id}', [GuaranteeController::class, 'destroy'])->name('guarantees.destroy');
 });
 
 // Authentication routes
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
