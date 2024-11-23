@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('applicant_address');
             $table->string('beneficiary_name');
             $table->text('beneficiary_address');
-            $table->enum('status', ['New', 'Reviewed', 'Applied', 'Issued']);
+            $table->enum('status', ['New', 'Submitted', 'Reviewed', 'Applied', 'Issued']);
             $table->timestamps();
         });
     }

@@ -24,7 +24,11 @@ class GuaranteeRepository implements GuaranteeRepositoryInterface
     public function updateStatus($id, $status)
     {
         $guarantee = $this->find($id);
-        $guarantee->update($status);
+
+        $guarantee->update([
+            'status' => $status,
+        ]);
+        
         return $guarantee;
     }
 
