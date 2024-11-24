@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GuaranteeController;
 
@@ -34,6 +35,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('guarantees/{id}/apply', [GuaranteeController::class, 'apply'])->name('guarantees.apply');
     Route::post('guarantees/{id}/issue', [GuaranteeController::class, 'issue'])->name('guarantees.issue');
     Route::delete('guarantees/{id}', [GuaranteeController::class, 'destroy'])->name('guarantees.destroy');
+    Route::get('/files', [FileController::class, 'index'])->name('files.index');
+    Route::post('/files/upload', [FileController::class, 'upload'])->name('files.upload');
+    Route::delete('/files/{id}', [FileController::class, 'delete'])->name('files.delete');
+
 });
 
 // Authentication routes

@@ -1,0 +1,27 @@
+[
+  {
+    "corporate_reference_number": "CRN123456",
+    "guarantee_type": "Bank",
+    "nominal_amount": 1000000,
+    "nominal_amount_currency": "USD",
+    "expiry_date": "2025-12-31",
+    "applicant_name": "John Doe",
+    "applicant_address": "123 Applicant St, Toronto, Canada",
+    "beneficiary_name": "Jane Smith",
+    "beneficiary_address": "456 Beneficiary Ave, Vancouver, Canada",
+    "status": "Active"
+  },
+  {
+    "corporate_reference_number": "CRN789012",
+    "guarantee_type": "Insurance",
+    "nominal_amount": 500000,
+    "nominal_amount_currency": "CAD",
+    "expiry_date": "2026-06-30",
+    "applicant_name": "ACME Corp",
+    "applicant_address": "789 Corporate Blvd, Montreal, Canada",
+    "beneficiary_name": "XYZ Inc",
+    "beneficiary_address": "123 Beneficiary Lane, Calgary, Canada",
+    "status": "New"
+  }
+]
+

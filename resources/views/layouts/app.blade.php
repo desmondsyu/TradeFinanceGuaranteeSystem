@@ -30,7 +30,7 @@
                                 class="hover:underline">Apply</a></li>
                         <li><a href="{{ route('guarantees.index', ['status' => 'Applied,Issued']) }}"
                                 class="hover:underline">Issue</a></li>
-                        <li><a href="" class="hover:underline">Upload</a></li>
+                        <li><a href="{{route('files.index')}}" class="hover:underline">Upload</a></li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST" class="inline">
                                 @csrf
