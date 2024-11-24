@@ -9,7 +9,8 @@
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "league/csv": "^9.18",
-        "spatie/array-to-xml": "^3.3"
+        "spatie/array-to-xml": "^3.3",
+        "ext-simplexml": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

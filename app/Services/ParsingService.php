@@ -16,6 +16,7 @@ class ParsingService
         'applicant_address' => 'string',
         'beneficiary_name' => 'string',
         'beneficiary_address' => 'string',
+        'status' => 'status',
     ];
 
     public function parseFile($file)
@@ -41,6 +42,9 @@ class ParsingService
         return iterator_to_array($csv->getRecords());
     }
 
+    /**
+     * @throws \Exception
+     */
     protected function parseXml($file)
     {
         $xmlContent = file_get_contents($file->getPathname());

@@ -57,7 +57,7 @@ class FileController extends Controller
                         'applicant_address' => $row['applicant_address'],
                         'beneficiary_name' => $row['beneficiary_name'],
                         'beneficiary_address' => $row['beneficiary_address'],
-                        'status' => 'New',
+                        'status' => $row['status'],
                     ]);
                 } else {
                     $errors[] = [
