@@ -1,6 +1,8 @@
 <?php
 namespace App\Services;
 
+use League\Csv\Exception;
+use League\Csv\UnavailableStream;
 use SimpleXMLElement;
 use League\Csv\Reader;
 
@@ -19,6 +21,10 @@ class ParsingService
         'status' => 'status',
     ];
 
+    /**
+     * @throws UnavailableStream
+     * @throws \Exception
+     */
     public function parseFile($file)
     {
         $extension = $file->getClientOriginalExtension();
@@ -35,7 +41,11 @@ class ParsingService
         }
     }
 
-    protected function parseCsv($file)
+    /**
+     * @throws UnavailableStream
+     * @throws Exception
+     */
+    protected function parseCsv($file): array
     {
         $csv = Reader::createFromPath($file->getPathname(), 'r');
         $csv->setHeaderOffset(0);
@@ -48,8 +58,20 @@ class ParsingService
     protected function parseXml($file)
     {
         $xmlContent = file_get_contents($file->getPathname());
-        $xml = new SimpleXMLElement($xmlContent);
-        return json_decode(json_encode($xml), true);
+
+        try {
+            $xml = new SimpleXMLElement($xmlContent);
+            $parsedData = [];
+            $lineNumber = 1;
+            foreach ($xml->guarantee as $guarantee) {
+                $parsedData[$lineNumber] = json_decode(json_encode($guarantee), true);
+                $lineNumber++;
+            }
+
+            return $parsedData;
+        } catch (\Exception $e) {
+            throw new \Exception('Error parsing XML: ' . $e->getMessage());
+        }
     }
 
     protected function parseJson($file)

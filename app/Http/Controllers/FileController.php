@@ -61,7 +61,7 @@ class FileController extends Controller
                     ]);
                 } else {
                     $errors[] = [
-                        'line' => $lineNumber + 1,
+                        'line' => $lineNumber,
                         'errors' => $rowErrors,
                     ];
                 }

@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <guarantees>
   <guarantee>
-    <corporate_reference_number>CRN123456</corporate_reference_number>
+    <corporate_reference_number>CRN12345326</corporate_reference_number>
     <guarantee_type>Bank</guarantee_type>
     <nominal_amount>1000000</nominal_amount>
     <nominal_amount_currency>USD</nominal_amount_currency>
@@ -9,10 +10,10 @@
     <applicant_address>123 Applicant St, Toronto, Canada</applicant_address>
     <beneficiary_name>Jane Smith</beneficiary_name>
     <beneficiary_address>456 Beneficiary Ave, Vancouver, Canada</beneficiary_address>
-    <status>Active</status>
+    <status>Reviewed</status>
   </guarantee>
   <guarantee>
-    <corporate_reference_number>CRN789012</corporate_reference_number>
+    <corporate_reference_number>CRN78913012</corporate_reference_number>
     <guarantee_type>Insurance</guarantee_type>
     <nominal_amount>500000</nominal_amount>
     <nominal_amount_currency>CAD</nominal_amount_currency>
