@@ -1,3 +1,0 @@
-corporate_reference_number,guarantee_type,nominal_amount,nominal_amount_currency,expiry_date,applicant_name,applicant_address,beneficiary_name,beneficiary_address,status
-CRN1234516,Bank,1000000,USD,2025-12-31,John Doe,"123 Applicant St, Toronto, Canada",Jane Smith,"456 Beneficiary Ave, Vancouver, Canada",Wrong
-CRN7890122,Insurance,500000,CAD,2026-06-30,ACME Corp,"789 Corporate Blvd, Montreal, Canada",XYZ Inc,"123 Beneficiary Lane, Calgary, Canada",Fake
