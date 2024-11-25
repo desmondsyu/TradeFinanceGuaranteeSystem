@@ -19,9 +19,8 @@ services:
       - DB_PASSWORD=guarantee_password
     volumes:
       - .:/var/www
-    # command: sh -c "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000"
-    command: sh -c "php artisan serve --host=0.0.0.0 --port=8000"
-
+    command: sh -c "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000"
+    # command: sh -c "php artisan serve --host=0.0.0.0 --port=8000"
 
   db:
     image: mysql:8.0

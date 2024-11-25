@@ -10,7 +10,7 @@
     <applicant_address>123 Applicant St, Toronto, Canada</applicant_address>
     <beneficiary_name>Jane Smith</beneficiary_name>
     <beneficiary_address>456 Beneficiary Ave, Vancouver, Canada</beneficiary_address>
-    <status>Reviewed</status>
+    <status>New</status>
   </guarantee>
   <guarantee>
     <corporate_reference_number>CRN78913012</corporate_reference_number>
@@ -25,4 +25,3 @@
     <status>New</status>
   </guarantee>
 </guarantees>
-

@@ -70,7 +70,7 @@ class GuaranteeController extends Controller
     public function review($id)
     {
         $this->guaranteeService->updateGuaranteeStatus($id, 'Reviewed');
-        return redirect()->route('guarantees.index', ['status' => 'Submitted'])->with('success', 'Guarantee submitted for review.');
+        return redirect()->route('guarantees.index', ['status' => 'Submitted'])->with('success', 'Guarantee reivewed.');
     }
 
     public function apply($id)
