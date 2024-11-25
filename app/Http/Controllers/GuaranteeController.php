@@ -46,6 +46,9 @@ class GuaranteeController extends Controller
             'beneficiary_name' => 'required|string|max:255',
             'beneficiary_address' => 'required|string|max:500',
             'status' => 'required|in:New,Approved,Issued,Applied',
+        ],[
+            'corporate_reference_number.unique' => 'This reference number is already in use.',
+            'expiry_date.after' => 'The expiry date must be in the future.',
         ]);
 
         $this->guaranteeService->createGuarantee($validatedData);

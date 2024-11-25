@@ -1,8 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+
     <div class="flex justify-center">
         <form method="POST" action="{{ route('guarantees.store') }}" class="space-y-4 p-4 w-96">
+
+            @if ($errors->any())
+                <div class="mb-4">
+                    <ul class="text-red-500 text-sm">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             @csrf
             <div>
                 <label for="corporate_reference_number" class="block text-sm font-medium text-gray-700">Corporate Reference
@@ -12,7 +26,8 @@
             </div>
             <div>
                 <label for="guarantee_type" class="block text-sm font-medium text-gray-700">Guarantee Type:</label>
-                <select name="guarantee_type" id="guarantee_type" required class="mt-1 block w-full border-gray-300 rounded-md">
+                <select name="guarantee_type" id="guarantee_type" required
+                    class="mt-1 block w-full border-gray-300 rounded-md">
                     <option value="Bank">Bank</option>
                     <option value="Bid Bond">Bid Bond</option>
                     <option value="Insurance">Insurance</option>
